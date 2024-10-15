@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,8 @@ public class GameTimer : MonoBehaviour
    [SerializeField, Header("残り時間")]
     GameObject time;
 
+    //ゲームオブジェクト
+    public GameObject timer;
 
     void Start()
     {
@@ -25,11 +28,26 @@ public class GameTimer : MonoBehaviour
     private void Update()
     {
         m_fTimer += Time.deltaTime;
+        int EndTime = (int)m_fTimer % 60;
 
         m_txtTimer.text = "残り時間"+ string.Format("{0:D2}:{1:D2}:{2:D2}",
           (int)m_fTimer / 60,
           (int)m_fTimer % 60,
           (int)(m_fTimer * 100) % 60
           );
+
+
+
+        EndTimer(EndTime);
+    }
+
+    public void EndTimer(int timer)
+    {
+        Debug.Log(timer);
+        if (timer >= 10)
+        {
+            GameController.EndGame();
+        }
+      
     }
 }

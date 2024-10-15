@@ -15,10 +15,11 @@ public class IgaguriGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(Input.GetMouseButtonDown(0))
         {
-            GameObject igaguri=Instantiate(igaguriPrefab);
-            Ray ray =Camera.main.ScreenPointToRay(Input.mousePosition);
+            GameObject igaguri = Instantiate(igaguriPrefab);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Vector3 worldDirection = ray.direction;
             igaguri.GetComponent<IgaguriController>().Shoot(worldDirection.normalized * 2000);
         }

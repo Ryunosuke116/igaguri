@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class IgaguriController : MonoBehaviour
 {
+    //ÉXÉRÉA
+    public int score = 10;
+    private int DestroyStack = 0;
     public void Shoot(Vector3 direction)
     {
         GetComponent<Rigidbody>().AddForce(direction);
@@ -13,7 +16,10 @@ public class IgaguriController : MonoBehaviour
     {
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<ParticleSystem>().Play();
+        ScoreScript.instance.ScoreManager(score);
     }
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +31,10 @@ public class IgaguriController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        DestroyStack++;
+        if(DestroyStack >= 120)
+        {
+            Destroy(gameObject);
+        }
     }
 }
