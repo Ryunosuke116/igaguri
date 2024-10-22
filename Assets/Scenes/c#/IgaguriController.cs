@@ -16,6 +16,7 @@ public class IgaguriController : MonoBehaviour
     {
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<ParticleSystem>().Play();
+        //ƒXƒRƒA‚ğ‘‚â‚·
         ScoreScript.instance.ScoreManager(score);
     }
 

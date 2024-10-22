@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameTimer : MonoBehaviour
 {
     private float m_fTimer;
-
+    private bool isStartTimer;      
     public Text m_txtTimer;
 
     public bool m_bActive = false;
@@ -22,13 +22,17 @@ public class GameTimer : MonoBehaviour
         Time.timeScale = 1f;
         //ƒtƒŒ[ƒ€”ƒ‚¤
         Application.targetFrameRate = 60;
+        isStartTimer = false;
 
        // m_txtTimer = GameObject.Find("timer").GetComponent<Text>();
     }
     private void Update()
     {
-        m_fTimer += Time.deltaTime;
-        int EndTime = (int)m_fTimer % 60;
+        if(isStartTimer)
+        {
+            m_fTimer += Time.deltaTime;
+        }
+            int EndTime = (int)m_fTimer % 60;
 
         m_txtTimer.text = "c‚èŠÔ"+ string.Format("{0:D2}:{1:D2}:{2:D2}",
           (int)m_fTimer / 60,

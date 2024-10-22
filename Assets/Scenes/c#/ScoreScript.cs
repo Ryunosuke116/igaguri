@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
@@ -13,7 +14,8 @@ public class ScoreScript : MonoBehaviour
     //　スコアを表示するためのTextコンポーネント
     public GameObject scoreText;
     private int totalScore = 0;
-
+    private int hitStack = 0;               //現在のスタック数
+    private const int maxStack = 100;       //最大スタック
     // Awakeメソッドでインスタンスの初期化を行う
 
     void Awake()
@@ -33,7 +35,20 @@ public class ScoreScript : MonoBehaviour
     //スコアを更新し、Textコンポーネントに反映するメソッド
     public void ScoreManager(int score)
     {
-        totalScore += score;
+    
+        //当たったらスタックをためる
+        hitStack++;
+
+        //100回当たるとスコアを3倍
+        if(hitStack >= maxStack)
+        {
+            totalScore += score * 3;
+        }
+        else
+        {
+            //スコアを増やす
+            totalScore += score;
+        }
         UpdateScoreText();
     }
 
