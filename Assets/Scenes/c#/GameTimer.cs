@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameTimer : MonoBehaviour
 {
     private float m_fTimer;
-    private bool isStartTimer;      
+    private static bool isStartTimer;      
     public Text m_txtTimer;
 
     public bool m_bActive = false;
@@ -53,5 +53,10 @@ public class GameTimer : MonoBehaviour
             GameController.EndGame();
         }
       
+    }
+
+    public static void IsTimer(bool value)
+    {
+        isStartTimer = value;
     }
 }
